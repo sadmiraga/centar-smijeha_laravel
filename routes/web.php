@@ -27,3 +27,12 @@ Route::get('/admin', function(){
 Route::get('/users/{username}',function($username){
     return 'Ovo je stranica od '. $username;
 });
+
+Route::resource('jokes', 'jokesController');
+
+
+Route::get('/alljokes',function(){
+    return view('jokesShow');
+});
+
+
