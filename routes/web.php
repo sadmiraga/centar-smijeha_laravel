@@ -12,9 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view ('welcome');
+    return view ('home');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/admin', function(){
+    return 'Ti si sad kao admin jel?';
+});
+
+Route::get('/users/{username}',function($username){
+    return 'Ovo je stranica od '. $username;
+});
