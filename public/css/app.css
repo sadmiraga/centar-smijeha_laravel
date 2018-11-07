@@ -8350,3 +8350,10 @@ button.close {
   }
 }
 
+#footer {
+  margin-top: 90%;
+  padding: 20px;
+  color: #fff;
+  background: #333;
+}
+
