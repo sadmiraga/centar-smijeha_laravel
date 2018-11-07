@@ -16,6 +16,9 @@
 });
 */
 
+Route::get('/posaljitevic',function(){
+    return view('posaljiteVic');
+});
 
 Route::get('/', function () {
     return view ('jokesShow');
@@ -54,3 +57,8 @@ Route::resource('jokes','jokesController');
 Route::get('/kategorije',function(){
     return view('kategorije');
 });
+
+
+
+//submiting a form 
+Route::post('/posaljitevic/submit', 'jokesController@submit');

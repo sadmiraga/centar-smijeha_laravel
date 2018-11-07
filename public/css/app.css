@@ -8357,3 +8357,13 @@ button.close {
   background: #333;
 }
 
+#submitform {
+  margin-right: 25%;
+  margin-left: 25%;
+}
+
+#errorMessages {
+  margin-right: 25%;
+  margin-left: 25%;
+}
+

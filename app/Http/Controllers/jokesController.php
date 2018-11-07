@@ -15,7 +15,7 @@ class jokesController extends Controller
     public function index()
     {   
         $jokes = jokes::all();
-        return view('jokes.index')->with('jokes', $jokes);
+        return view('posaljiteVic')->with('jokes', $jokes);
     }
 
     /**
@@ -82,6 +82,22 @@ class jokesController extends Controller
     public function destroy($id)
     {
         return 'Bit ce izbrisana fora sa ID = ';
+    }
+
+    public function submit(Request $request){
+        $this->validate($request, [
+            'jokeText' => 'required'
+        ]);
+        
+        //novi vic
+        $jokes = new jokes;
+        $jokes->jokeText = $request->input('jokeText');
+
+        $jokes->save();
+
+        //redirect
+
+        return redirect('/');
     }
 
     
