@@ -43,16 +43,16 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
+                            <li><a href="facebook.com">Pošaljite nam vic</a></li>
+                            <li><a href="facebook.com">kategorije</a></li>
                             <li><a href="{{ route('login') }}">Prijava</a></li>
                             <li><a href="{{ route('register') }}">Registracija</a></li>
+                            
+                           
+
                         @else
-                        <li>
-                            <!-- test za navigation menu -->
-                                <a href="test">
-                                    test brudai
-                                </a>
-                                
-                            </li>
+                        <li><a href="facebook.com">Moj Profil</a></li>
+                        <li><a href="facebook.com">Kategorije</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -79,9 +79,16 @@
         </nav>
 
         @yield('content')
+
     </div>
 
+    
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+        <footer id="footer" class="text-center">
+            <p><a href="https://www.instagram.com/centar_smijeha/"> Instagram </a> </p>
+            <p><a href="https://www.facebook.com/sadmir.hasanic.5"> Facebook </a> </p>
+            <p><a href="https://twitter.com/CSmijeha"> Twitter </a> </p>
+        </footer>
 </body>
 </html>

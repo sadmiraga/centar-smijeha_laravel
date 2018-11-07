@@ -11,13 +11,25 @@
 |
 */
 
-Route::get('/', function () {
-    return view ('home');
+/*Route::get('/', function () {
+   return view ('home');
 });
+*/
+
+
+Route::get('/', function () {
+    return view ('jokesShow');
+ });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/home', function(){
+    return view('jokesShow');
+});
+
+
 
 
 Route::get('/admin', function(){
@@ -28,11 +40,17 @@ Route::get('/users/{username}',function($username){
     return 'Ovo je stranica od '. $username;
 });
 
-Route::resource('jokes', 'jokesController');
+
+//Route::get('jokes/destroy', 'jokesController@destroy');
+
 
 
 Route::get('/alljokes',function(){
     return view('jokesShow');
 });
 
+Route::resource('jokes','jokesController');
 
+Route::get('/kategorije',function(){
+    return view('kategorije');
+});

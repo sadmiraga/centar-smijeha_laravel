@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\jokes;
 
 class jokesController extends Controller
 {
@@ -12,8 +13,9 @@ class jokesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $jokes = jokes::all();
+        return view('jokes.index')->with('jokes', $jokes);
     }
 
     /**
@@ -45,7 +47,7 @@ class jokesController extends Controller
      */
     public function show($id)
     {
-        //
+        return 'ok';
     }
 
     /**
@@ -79,6 +81,8 @@ class jokesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return 'Bit ce izbrisana fora sa ID = ';
     }
+
+    
 }
