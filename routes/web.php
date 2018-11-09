@@ -20,6 +20,7 @@ Route::get('/posaljitevic',function(){
     return view('posaljiteVic');
 });
 
+
 Route::get('/', function () {
     return view ('jokesShow');
  });

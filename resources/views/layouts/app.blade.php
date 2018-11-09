@@ -43,8 +43,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="facebook.com">Pošaljite nam vic</a></li>
-                            <li><a href="facebook.com">kategorije</a></li>
+                            <li><a href="/posaljitevic">Pošaljite nam vic</a></li>
+                            <li><a href="/kategorije">Kategorije</a></li>
                             <li><a href="{{ route('login') }}">Prijava</a></li>
                             <li><a href="{{ route('register') }}">Registracija</a></li>
                             
@@ -52,7 +52,7 @@
 
                         @else
                         <li><a href="facebook.com">Moj Profil</a></li>
-                        <li><a href="facebook.com">Kategorije</a></li>
+                        <li><a href="/kategorije">Kategorije</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -79,6 +79,8 @@
         </nav>
 
         @yield('content')
+
+        @yield('categories')
 
     </div>
 

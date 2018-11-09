@@ -10,7 +10,7 @@ class categoriesController extends Controller
 {
     public function index(){
         $categories = category::all();
-        return view('category.index')->with('category',$categories);
+        return view('kategorije')->with('category',$categories);
     }
 }
 

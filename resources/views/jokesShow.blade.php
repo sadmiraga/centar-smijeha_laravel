@@ -6,19 +6,25 @@
 <?php 
 
     $jokes = App\jokes::all();
-    if(count($jokes)>1){
+?>
+    @if(count($jokes)>0){
 
-     foreach($jokes as $joke){
-        echo '<div class="alert alert-info">';
-            echo '<p style="text-align:center;">';
-                echo $joke->jokeText;
-            echo '</p>';
-        echo '</div>';
-    }
+        @foreach($jokes as $joke)
+        <div class="alert alert-info">
+                <p style="text-align:center;">
+                        
+                    {{$joke->jokeText}}
+                    <br>
+                    {{$joke->id}}
+                        
+                </p>
+            </div>
+        
+        @endforeach
 
-    } else{
-        echo '<p> No jokes </p>';
-    }
+    @else
+            <p> Nema viceva </p>
+    @endif
 ?>
 
 @endsection

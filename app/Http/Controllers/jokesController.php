@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\jokes;
+use App\category;
 
 class jokesController extends Controller
 {
@@ -14,8 +15,9 @@ class jokesController extends Controller
      */
     public function index()
     {   
+        
         $jokes = jokes::all();
-        return view('posaljiteVic')->with('jokes', $jokes);
+        return view('app')->with('jokes', $jokes);
     }
 
     /**
