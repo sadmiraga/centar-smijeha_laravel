@@ -16,8 +16,8 @@ class jokesController extends Controller
     public function index()
     {   
         
-        $jokes = jokes::all();
-        return view('app')->with('jokes', $jokes);
+        //$jokes = jokes::all();
+        //return view('app')->with('jokes', $jokes);
     }
 
     /**
@@ -94,6 +94,7 @@ class jokesController extends Controller
         //novi vic
         $jokes = new jokes;
         $jokes->jokeText = $request->input('jokeText');
+        $jokes->category_id = $request->input('category_id');
 
         $jokes->save();
 

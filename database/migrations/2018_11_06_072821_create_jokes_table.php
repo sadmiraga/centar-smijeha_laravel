@@ -17,6 +17,9 @@ class CreateJokesTable extends Migration
             $table->increments('id');
             $table->timestamps('created_at');
             $table->text('jokeText');
+            $table->integer('category_id')->default('1');
+            $table->integer('user_id')->default('1');
+
         });
     }
 

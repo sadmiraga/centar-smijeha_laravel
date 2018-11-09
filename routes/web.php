@@ -16,6 +16,8 @@
 });
 */
 
+Route::get('/mojprofil/{id}', 'profileController@index');
+
 Route::get('/posaljitevic',function(){
     return view('posaljiteVic');
 });
@@ -44,6 +46,8 @@ Route::get('/users/{username}',function($username){
     return 'Ovo je stranica od '. $username;
 });
 
+
+Route::get('kategorije/{category_id}', 'categoriesController@show');
 
 //Route::get('jokes/destroy', 'jokesController@destroy');
 

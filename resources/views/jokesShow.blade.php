@@ -5,7 +5,7 @@
 
 <?php 
 
-    $jokes = App\jokes::all();
+     $jokes = App\jokes::orderBy('id','desc')->get();
 ?>
     @if(count($jokes)>0){
 
@@ -15,7 +15,7 @@
                         
                     {{$joke->jokeText}}
                     <br>
-                    {{$joke->id}}
+                    
                         
                 </p>
             </div>
@@ -25,7 +25,7 @@
     @else
             <p> Nema viceva </p>
     @endif
-?>
+
 
 @endsection
 
