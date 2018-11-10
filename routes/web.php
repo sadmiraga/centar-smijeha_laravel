@@ -16,6 +16,9 @@
 });
 */
 
+//IZBRIŠI KORISNIKA
+Route::get('/deleteUser/{user_id}','usersController@destroy');
+
 //upravljanje korisnicima
 Route::get('/manageUsers', function(){
     return view('adminpanel.manageUsers');
