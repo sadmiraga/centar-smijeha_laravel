@@ -10,9 +10,10 @@
     $jokes = App\jokes::where('id',$joke_id)->get();
     foreach($jokes as $joke){
         $jokeValue = $joke->jokeText;
+        $jokeCategoryID = $joke->category_id;
     }
 ?>
-
+    {{$jokeCategoryID}}
 
     @if(count($errors)>0)
         @foreach($errors->all() as $error)
@@ -27,7 +28,7 @@
             {{Form::textarea('jokeText',"$jokeValue", ['class' => 'form-control', 'rows'=>'3', 'cols'=>'2'] )}}
             <select name="category_id">
                 @foreach ($categories as $category)
-                    <option value ={{$category->id}}> {{$category->categoryName}} </option>    
+                    <option value ={{$category->id}}> {{$category->categoryName}} </option>
                 @endforeach
             </select>
             

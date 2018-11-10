@@ -34,7 +34,7 @@
 
 
         <div class="text-center">
-            {{Form::submit('Spremi',['class'=>'btn btn-primary'])}}
+            {{Form::submit('Pošalji',['class'=>'btn btn-primary'])}}
         </div>
     {!! Form::close() !!}
 

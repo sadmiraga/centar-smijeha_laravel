@@ -16,6 +16,22 @@
 });
 */
 
+//upravljanje korisnicima
+Route::get('/manageUsers', function(){
+    return view('adminpanel.manageUsers');
+});
+
+Route::get('/manageUsers', 'profileController@manageUsers');
+
+//submit kategorije 
+Route::post('/submitCategory', 'profileController@submitCategory');
+
+//dodaj kategoriju izgled 
+Route::get('/mojprofil/adminpanel/dodajkategoriju', 'profileController@dodajKategoriju' );
+
+//admin PANEL izled 
+Route::get('/mojprofil/adminpanel', 'profileController@adminPanel');
+
 
 //execute uredjivanja fore
 Route::get('/mojprofil/uredi/{{joke_id}}', 'jokesController@update');
