@@ -22,7 +22,7 @@
         @endforeach
     @endif
     
-    {!! Form::open(['url' => "mojprofil/uredi"]) !!}
+    {!! Form::open(['action'=>['jokesController@update',$joke_id],'method'=>'POST']) !!}
         <div class="form-group" id="submitform">
             {{Form::textarea('jokeText',"$jokeValue", ['class' => 'form-control', 'rows'=>'3', 'cols'=>'2'] )}}
             <select name="category_id">
@@ -34,7 +34,7 @@
 
         </div>
 
-
+        {{Form::hidden('_method','PUT')}}
 
         <div class="text-center">
             {{Form::submit('Spremi',['class'=>'btn btn-primary'])}}

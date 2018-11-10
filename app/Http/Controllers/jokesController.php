@@ -73,9 +73,23 @@ class jokesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = $request->all();
-        $joke = jokes::findorfail($id);
-        $updateNow = $joke->update($input);
+        $this->validate($request, [
+            'jokeText' => 'required'
+        ]);
+        
+        //novi vic
+        $jokes = jokes::find($id);
+        $jokes->jokeText = $request->input('jokeText');
+        $jokes->category_id = $request->input('category_id');
+        if($user = Auth::user()){
+            $jokes->user_id = Auth::id();
+        }
+
+        $jokes->save();
+
+        //redirect
+
+        return redirect('/');
     }
 
     /**

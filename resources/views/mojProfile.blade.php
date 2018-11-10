@@ -21,16 +21,26 @@
     <div class="alert alert-info">
             <p style="text-align:center;">
                     
-                {{$joke->jokeText}}
-                <br>
-                <a href="/mojprofil/delete/{{$joke->id}}"> Izbriši </a>
-                <a href="/mojprofil/edit/{{$joke->id}}"> Uredi </a>
-                
-
-                
-                    
+                {{$joke->jokeText}}    
             </p>
+
+            <a href="/mojprofil/delete/{{$joke->id}}">
+                <button class="btn btn-primary">
+                    Izbriši
+                </button>
+            </a>
+    
+            <a href="/mojprofil/edit/{{$joke->id}}">
+                <button class="btn btn-primary">
+                    Uredi
+                </button>
+            </a>
         </div>
+        
+
+ 
+
+
     
     @endforeach
 

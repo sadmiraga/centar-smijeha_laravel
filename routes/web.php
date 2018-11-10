@@ -18,7 +18,7 @@
 
 
 //execute uredjivanja fore
-Route::get('/mojprofil/uredi', 'jokesController@update');
+Route::get('/mojprofil/uredi/{{joke_id}}', 'jokesController@update');
 
 
 //samo vraca blade za uredjivanje fore
