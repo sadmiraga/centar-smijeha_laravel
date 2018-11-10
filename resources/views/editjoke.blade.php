@@ -1,14 +1,17 @@
 @extends('layouts.app')
 
+
 @section('content')
+    
+
 
 <?php
     $categories = App\category::all();
-    
+    $jokes = App\jokes::where('id',$joke_id)->get();
+    foreach($jokes as $joke){
+        $jokeValue = $joke->jokeText;
+    }
 ?>
-
-
-
 
 
     @if(count($errors)>0)
@@ -19,9 +22,9 @@
         @endforeach
     @endif
     
-    {!! Form::open(['url' => 'posaljitevic/submit']) !!}
+    {!! Form::open(['url' => "mojprofil/uredi"]) !!}
         <div class="form-group" id="submitform">
-            {{Form::textarea('jokeText','', ['class' => 'form-control', 'placeholder'=>'Napišite vic', 'rows'=>'3', 'cols'=>'2'] )}}
+            {{Form::textarea('jokeText',"$jokeValue", ['class' => 'form-control', 'rows'=>'3', 'cols'=>'2'] )}}
             <select name="category_id">
                 @foreach ($categories as $category)
                     <option value ={{$category->id}}> {{$category->categoryName}} </option>    
@@ -37,5 +40,23 @@
             {{Form::submit('Spremi',['class'=>'btn btn-primary'])}}
         </div>
     {!! Form::close() !!}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @endsection

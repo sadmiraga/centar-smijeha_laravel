@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\jokes;
 use App\category;
+use Illuminate\Support\Facades\Auth;
 
 class jokesController extends Controller
 {
@@ -60,7 +61,7 @@ class jokesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('editjoke')->with('joke_id',$id);
     }
 
     /**
@@ -72,7 +73,9 @@ class jokesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $joke = jokes::findorfail($id);
+        $updateNow = $joke->update($input);
     }
 
     /**
@@ -83,7 +86,11 @@ class jokesController extends Controller
      */
     public function destroy($id)
     {
-        return 'Bit ce izbrisana fora sa ID = ';
+        $jokes = jokes::findOrFail($id);
+        $jokes->delete();
+        return redirect('/');
+
+       
     }
 
     public function submit(Request $request){
@@ -95,6 +102,9 @@ class jokesController extends Controller
         $jokes = new jokes;
         $jokes->jokeText = $request->input('jokeText');
         $jokes->category_id = $request->input('category_id');
+        if($user = Auth::user()){
+            $jokes->user_id = Auth::id();
+        }
 
         $jokes->save();
 

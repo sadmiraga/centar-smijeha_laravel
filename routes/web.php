@@ -16,7 +16,17 @@
 });
 */
 
-Route::get('/mojprofil/{id}', 'profileController@index');
+
+//execute uredjivanja fore
+Route::get('/mojprofil/uredi', 'jokesController@update');
+
+
+//samo vraca blade za uredjivanje fore
+Route::get('/mojprofil/edit/{joke_id}', 'jokesController@edit');
+
+Route::get('/mojprofil/delete/{joke_id}', 'jokesController@destroy' );
+
+Route::get('/mojprofil', 'profileController@index');
 
 Route::get('/posaljitevic',function(){
     return view('posaljiteVic');

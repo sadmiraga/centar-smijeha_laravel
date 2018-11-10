@@ -7,10 +7,12 @@ use App\jokes;
 
 class profileController extends Controller
 {
-    public function index($userID){
+    public function index(){
         
-        $jokes = $jokes::where('user_id',$userID)->get();
+        //$jokes = jokes::where('user_id',$userID)->get();
 
-        return view('mojProfile')->with('viceviOdUsera',$jokes);
+        //return view('mojProfile')->with('viceviOdUsera',$jokes);
+
+        return view('mojProfile');
     }
 }

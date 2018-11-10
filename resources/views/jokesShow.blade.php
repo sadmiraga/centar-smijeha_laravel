@@ -7,7 +7,7 @@
 
      $jokes = App\jokes::orderBy('id','desc')->get();
 ?>
-    @if(count($jokes)>0){
+    @if(count($jokes)>0)
 
         @foreach($jokes as $joke)
         <div class="alert alert-info">
