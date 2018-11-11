@@ -28,7 +28,11 @@
             {{Form::textarea('jokeText',"$jokeValue", ['class' => 'form-control', 'rows'=>'3', 'cols'=>'2'] )}}
             <select name="category_id">
                 @foreach ($categories as $category)
-                    <option value ={{$category->id}}> {{$category->categoryName}} </option>
+                    @if(($category->id)==$jokeCategoryID)
+                    <option selected="selected" value ={{$category->id}}> {{$category->categoryName}} </option>
+                    @else 
+                        <option value ={{$category->id}}> {{$category->categoryName}} </option>
+                    @endif
                 @endforeach
             </select>
             

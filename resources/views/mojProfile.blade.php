@@ -5,20 +5,17 @@
 
     @if(((Auth::user()->role) == 1)|| ((Auth::user()->role) == 2) )
 
+        <div class="well" id="usredini">
         <a href="/mojprofil/adminpanel">
             <button class="btn btn-primary" id="dugme">
             Admin Panel
             </button>
         </a>
+        </div>
     @endif
     <br>
 
-    <!-- PRIVREMENI ISPIS PODATAKA O USERU -->
-    {{'ID = '}}
-    {{$userId = Auth::id()}}
-    <br>
-    {{'E-mail = '}}
-    {{$email = Auth::user()->email}}
+
 
 
     <!-- ISPIS SVIH VICEVA OD USER -->

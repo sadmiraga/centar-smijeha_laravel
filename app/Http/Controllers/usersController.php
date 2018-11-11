@@ -32,7 +32,7 @@ class usersController extends Controller
         $user = User::find($id);
         $user->role = $request->input('role');
         $user->save();
-        return redirect('/');
+        return redirect('/manageUsers');
 
 
     }
