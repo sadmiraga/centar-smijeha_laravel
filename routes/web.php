@@ -16,6 +16,13 @@
 });
 */
 
+//UNLIKE SA POCETNE EXECUTE
+Route::get('/unlike/{like_id}', 'likesController@unlike');
+
+//LIKE SA POCETNE EXECUTE
+Route::get('/like/{joke_id}', 'likesController@like');
+
+
 //execute uredjivanje korisnika
 Route::post('/editUser/uredi/{id}','usersController@uredi');
 

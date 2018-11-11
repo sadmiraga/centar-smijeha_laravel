@@ -30,4 +30,10 @@ class User extends Authenticatable
     public function jokes(){
         return $this->hasMany(jokes::class);
     }
+
+    public function likes(){
+        return $this->hasMany(likes::class);
+    }
+
+
 }
