@@ -71,13 +71,17 @@ class jokesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+
+
     public function update(Request $request, $id)
     {
         $this->validate($request, [
             'jokeText' => 'required'
         ]);
         
-        //novi vic
+        //uredjivanje vica
         $jokes = jokes::find($id);
         $jokes->jokeText = $request->input('jokeText');
         $jokes->category_id = $request->input('category_id');

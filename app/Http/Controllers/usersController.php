@@ -15,4 +15,26 @@ class usersController extends Controller
         return redirect('/manageUsers');
     }
 
+    public function update($user_id){
+        
+        $user = User::findOrFail($user_id);
+        return view('adminpanel.editUser')->with('user',$user);
+    }
+
+    public function uredi(Request $request,$id){
+        $this->validate($request,[
+            'role' => 'required'
+        ]);
+
+        
+        //uredjivanje korisnika
+
+        $user = User::find($id);
+        $user->role = $request->input('role');
+        $user->save();
+        return redirect('/');
+
+
+    }
+
 }

@@ -16,6 +16,12 @@
 });
 */
 
+//execute uredjivanje korisnika
+Route::post('/editUser/uredi/{id}','usersController@uredi');
+
+//UREDI  KORISNIKA PRIKAZ FORME
+Route::get('/editUser/{user_id}', 'usersController@update');
+
 //IZBRIŠI KORISNIKA
 Route::get('/deleteUser/{user_id}','usersController@destroy');
 
