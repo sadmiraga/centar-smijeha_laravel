@@ -8399,3 +8399,23 @@ button.close {
   word-wrap: break-word;
 }
 
+#imeAutora {
+  text-align: center;
+  font-size: 90%;
+}
+
+#likeLink {
+  display: block;
+  width: 10%;
+  margin-left: 45%;
+  margin-right: 45%;
+}
+
+#textVica {
+  font-size: 200%;
+}
+
+#vic {
+  text-align: center;
+}
+
