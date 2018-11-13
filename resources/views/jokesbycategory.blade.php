@@ -48,14 +48,14 @@
                     
                     <!-- LIKE -->
                     @if(count($likeCount)==0)
-                        <a href="/like/{{$joke->id}}">
+                        <a href="/likeByCategory/{{$joke->id}}/{{$joke->category_id}}">
                             <button  class="btn btn-primary">
                                 Like
                             </button>
                         </a>
                     <!--UNLIKE -->                    
                     @else
-                        <a href="/unlike/{{$joke->id}}">
+                        <a href="/unlikeByCategory/{{$joke->id}}/{{$joke->category_id}}">
                             <button  class="btn btn-primary">
                                 Unlike
                             </button>

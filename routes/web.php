@@ -16,8 +16,11 @@
 });
 */
 
+//UNLIKE SA VICEVA PO KATEGORIJI i VRACA NA VICEVE IZ TE KATEGORIJE
+Route::get('/unlikeByCategory/{joke_id}/{category_id}','likesController@unlikeByCategory');
 
-
+//LIKE SA VICEVA PO KATEGORIJI i VRACA NA VICEVE IZ TE KATEGORIJE
+Route::get('/likeByCategory/{joke_id}/{category_id}', 'likesController@likeByCategory');
 
 //UNLIKE SA POCETNE EXECUTE
 Route::get('/unlike/{like_id}', 'likesController@unlike');
