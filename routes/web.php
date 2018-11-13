@@ -17,7 +17,7 @@
 */
 
 
-
+Route::get('/like/{joke_id}', 'likesController@unlikeCategory');
 
 //UNLIKE SA POCETNE EXECUTE
 Route::get('/unlike/{like_id}', 'likesController@unlike');
