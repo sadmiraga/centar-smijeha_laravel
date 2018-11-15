@@ -10,6 +10,10 @@
 
     <title>Centar Smijeha</title>
 
+    <!-- SCRIPTS -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="{{ asset('js/app.js')}}" defer></script>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>

@@ -36,6 +36,16 @@
         <div class="text-center">
             {{Form::submit('Pošalji',['class'=>'btn btn-primary'])}}
         </div>
-    {!! Form::close() !!}
 
+        <!-- I AM NOT ROBOT -->
+        <div id="nisamRobot" class="g-recaptcha" data-sitekey="{{env('NOCAPTCHA_SITEKEY')}}"></div>
+        @if($errors->has('g-recaptcha-response'))
+            <span class="invalid-feedback" style="display:block">
+                <strong>{{$errors->first('g-recaptcha-response')}} </strong>
+            </span>
+        @endif
+        
+        
+    {!! Form::close() !!}
+    
 @endsection
