@@ -107,8 +107,6 @@ class jokesController extends Controller
         $jokes = jokes::findOrFail($id);
         $jokes->delete();
         return redirect('/');
-
-       
     }
 
     public function submit(Request $request){

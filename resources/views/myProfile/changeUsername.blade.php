@@ -18,7 +18,6 @@
 
     <!-- FORMA -->
     {!! Form::open(['action'=>'profileController@changeUsernameSubmit', 'method'=>'POST']) !!}
-    {{ csrf_field() }}
     
     <!-- text emaila-->
     {{ Form::text("newUsername","$staroIme",['class'=>'form-control'])}}

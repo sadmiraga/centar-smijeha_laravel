@@ -11,6 +11,22 @@ use Illuminate\Support\Facades\Auth;
 class profileController extends Controller
 {
 
+    //promjeni EMAIL execute 
+    public function changeEmailSubmit(Request $request){
+        $this->validate($request, [
+            'newEmail' => 'required'
+        ]);
+
+        // ID OD USERA
+        $userID = Auth::id();
+
+        $user = User::find($userID);
+        $user->email = $request->input('newEmail');
+
+        $user->save();
+        return redirect('urediProfil');
+    }
+
     //promjeni USERNAME execute 
     public function changeUsernameSubmit(Request $request){
         $this->validate($request,[

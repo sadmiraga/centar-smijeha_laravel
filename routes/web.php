@@ -16,6 +16,15 @@
 });
 */
 
+// change EMAIL execute 
+Route::post('changeEmailSubmit', 'profileController@changeEmailSubmit');
+
+// vrati dizajn za change EMAIL 
+Route::get('/changeEmail', function(){
+    return view('myProfile.changeEmail');
+});
+
+
 // EXECUTE CHANGE USERNAME
 Route::post('changeUsernameSubmit','profileController@changeUsernameSubmit');
 
