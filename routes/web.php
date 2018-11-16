@@ -16,6 +16,23 @@
 });
 */
 
+// EXECUTE CHANGE USERNAME
+Route::post('changeUsernameSubmit','profileController@changeUsernameSubmit');
+
+// VRATI DIZAJN ZA CHANGE USERNAME
+Route::get('/changeUsername', function(){
+    return view('myProfile.changeUsername');
+});
+
+//NIJE GOTOVO BRIJA
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Route::post('/editUserSubmit', 'profileController@urediProfilSubmit');
+
+
+
+//UREDI PROFIL DIZAJN 
+Route::get('urediProfil', 'profileController@urediProfilDizajn');
+
 //UNLIKE SA VICEVA PO KATEGORIJI i VRACA NA VICEVE IZ TE KATEGORIJE
 Route::get('/unlikeByCategory/{joke_id}/{category_id}','likesController@unlikeByCategory');
 

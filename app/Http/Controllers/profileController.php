@@ -6,11 +6,37 @@ use Illuminate\Http\Request;
 use App\jokes;
 use App\category;
 use App\User;
-
 use Illuminate\Support\Facades\Auth;
 
 class profileController extends Controller
 {
+
+    //promjeni USERNAME execute 
+    public function changeUsernameSubmit(Request $request){
+        $this->validate($request,[
+            'newUsername' => 'required'
+        ]);
+        
+        // ID OD USERA
+        $userID = Auth::id();
+
+        $user = User::find($userID);
+        $user->name = $request->input('newUsername');
+
+        $user->save();
+        return redirect('urediProfil');
+
+    }
+
+    // uredi profil DIZAJn
+    public function urediProfilDizajn(){
+        return view ('urediProfil');
+    }
+
+    public function urediProfilSubmit(Request $request, $user_id){
+        return $user_id;
+    }
+
     public function index(){
         
         //$jokes = jokes::where('user_id',$userID)->get();

@@ -33,8 +33,10 @@ class usersController extends Controller
         $user->role = $request->input('role');
         $user->save();
         return redirect('/manageUsers');
+    }
 
-
+    public function editPersonalInfo(){
+        return 'to je taj view';
     }
 
 }

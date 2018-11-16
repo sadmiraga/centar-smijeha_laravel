@@ -3,17 +3,22 @@
 
 @section('content')
 
-    @if(((Auth::user()->role) == 1)|| ((Auth::user()->role) == 2) )
+<div class="well" id="usredini">
+    
+    <a href="/urediProfil">
+        <button class="btn btn-primary" id="dugme">
+        Uredi Profil
+        </button>
+    </a>
 
-        <div class="well" id="usredini">
+    @if(((Auth::user()->role) == 1)|| ((Auth::user()->role) == 2) )
         <a href="/mojprofil/adminpanel">
             <button class="btn btn-primary" id="dugme">
             Admin Panel
             </button>
         </a>
-        </div>
     @endif
-    <br>
+</div>
 
 
 
