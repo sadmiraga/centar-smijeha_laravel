@@ -14,6 +14,27 @@ class jokesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //APPROVE JOKE EXECUTE
+    public function approveJoke($joke_id){
+        
+        $joke = jokes::find($joke_id);
+        $joke ->approve = 'yes';
+        $joke->save();
+        return redirect('/approveJokes');
+    }
+    
+     //DIZAJN ZA APPROVE JOKES
+    public function approveJokesDesign(){
+
+        // pokupiti sve viceve koji nisu odobreni
+        $jokesToApprove = jokes::where('approve','no')->get();
+
+        return view('adminpanel.approveJokes')->with('jokes',$jokesToApprove);
+    }
+
+
+
     public function index()
     {   
         

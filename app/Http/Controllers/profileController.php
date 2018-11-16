@@ -69,7 +69,7 @@ class profileController extends Controller
             return view('adminpanel.headAdminPanel');
         //regularni admin stranica
         } else if((Auth::user()->role)==2){
-            return view('adminpanel.regularAdminPanel');
+            return view('adminpanel.homeAdminPanel');
         }
     }
 

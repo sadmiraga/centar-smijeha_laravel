@@ -16,6 +16,15 @@
 });
 */
 
+//ODBIJ VIC EXECUTE 
+Route::get('/declineJoke/{joke_id}', 'jokesController@destroy');
+
+// ODOBRI VIC EXECUTE 
+Route::get('/approveJoke/{joke_id}','jokesController@approveJoke');
+
+//APPROVE JOKES DIZAJN 
+Route::get('/approveJokes','jokesController@approveJokesDesign');
+
 // change EMAIL execute 
 Route::post('changeEmailSubmit', 'profileController@changeEmailSubmit');
 
@@ -32,12 +41,6 @@ Route::post('changeUsernameSubmit','profileController@changeUsernameSubmit');
 Route::get('/changeUsername', function(){
     return view('myProfile.changeUsername');
 });
-
-//NIJE GOTOVO BRIJA
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Route::post('/editUserSubmit', 'profileController@urediProfilSubmit');
-
-
 
 //UREDI PROFIL DIZAJN 
 Route::get('urediProfil', 'profileController@urediProfilDizajn');

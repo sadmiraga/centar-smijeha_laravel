@@ -19,6 +19,7 @@ class CreateJokesTable extends Migration
             $table->text('jokeText');
             $table->integer('category_id')->default('1');
             $table->integer('user_id')->default('1');
+            $table->string('approve')->default('no');
 
         });
     }
