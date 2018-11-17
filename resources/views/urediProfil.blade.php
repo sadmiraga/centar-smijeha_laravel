@@ -13,7 +13,7 @@
         
         <!-- PASSWORD -->
         <a href="/changePassword">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" id="dugme">
                 Promjeni password
             </button>
         </a>
@@ -22,7 +22,7 @@
 
         <!-- E-mail -->
         <a href="/changeEmail">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" id="dugme">
                 Promjeni E-mail
             </button>
         </a>
@@ -31,7 +31,7 @@
 
         <!-- USERNAME -->
         <a href="/changeUsername">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" id="dugme">
                 Promjeni Korisničko Ime
             </button>
         </a>

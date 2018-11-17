@@ -11,14 +11,14 @@
     </div>
 
     <!-- Najbolji vicevi kategorija -->
-    <button onclick='location.href="/najboljiVicevi"' class="btn btn-primary" id="dugmeKategorije">
+    <button onclick='location.href="/najboljiVicevi"' class="btn btn-primary" id="dugme">
         Top Vicevi 
     </button>
 
     <!-- ispis svih kategorija -->
     @if(count($categories)>0)
         @foreach($categories as $category)
-                <button onclick='location.href="/kategorije/{{$category->id}}"' class="btn btn-primary" id="dugmeKategorije">
+                <button onclick='location.href="/kategorije/{{$category->id}}"' class="btn btn-primary" id="dugme">
                         {{$category->categoryName}}
                 </button>
             <br>

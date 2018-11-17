@@ -10,7 +10,7 @@
 <div class="well" id="usredini">
     <!-- DODAJ KATEGORIJU -->
     <a href="/mojprofil/adminpanel/dodajkategoriju">
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" id="dugme">
             Dodaj Kategoriju
         </button>
     </a>
@@ -19,7 +19,7 @@
 
     <!-- ODOBRI VICEVE -->
     <a href="/approveJokes">
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" id="dugme">
             Odobri Viceve
         </button>
     </a>

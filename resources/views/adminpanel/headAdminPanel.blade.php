@@ -2,7 +2,7 @@
 
 @section('adminSection')
     <a href="/manageUsers">
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" id="dugme">
             Upravljanje korisnicima
         </button>
     </a>
