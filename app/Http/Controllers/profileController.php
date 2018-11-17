@@ -19,8 +19,8 @@ class profileController extends Controller
         //PROVJERA DA LI JE UNIO SVE INFORMACIJE IZ FORME
         $this->validate($request,[
             'currentPassword' => 'required',
-            'newPassword' => 'required',
-            'newPasswordCheck' => 'required'
+            'newPassword' => 'required|min:6',
+            'newPasswordCheck' => 'required|min:6'
         ]);
 
 
