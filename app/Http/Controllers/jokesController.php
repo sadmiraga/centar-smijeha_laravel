@@ -141,6 +141,10 @@ class jokesController extends Controller
         $jokes->category_id = $request->input('category_id');
         if($user = Auth::user()){
             $jokes->user_id = Auth::id();
+                //ako je Head Admin objavio vic da je automatski odobren
+                if((Auth::user()->role)==1){
+                    $jokes->approve = 'yes';
+                }
         }
 
         $jokes->save();
