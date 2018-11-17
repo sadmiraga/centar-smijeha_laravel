@@ -10,6 +10,8 @@
         Uredi Profil
         </button>
     </a>
+    <br>
+    <br>
 
     @if(((Auth::user()->role) == 1)|| ((Auth::user()->role) == 2) )
         <a href="/mojprofil/adminpanel">
@@ -56,7 +58,9 @@
     @endforeach
 
 @else
-        <p> Još nemate objavljenih viceva </p>
+        <div class="well" id="usredini">
+            <p> Još nemate objavljenih viceva </p>
+        </div>
 @endif
 
 

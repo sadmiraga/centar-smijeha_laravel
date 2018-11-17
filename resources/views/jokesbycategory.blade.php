@@ -32,6 +32,7 @@
             <span id="imeAutora">
                 {{$username}}
             </span>
+            <br>
 
             <!-- provjera da li je user prijaveljen-->
             @if($juzer = Auth::user())
@@ -43,9 +44,7 @@
                         'joke_id' => $joke->id
                     ])->get();
                 ?>
-
-                <div id="usredini">
-                    
+    
                     <!-- LIKE -->
                     @if(count($likeCount)==0)
                         <a href="/likeByCategory/{{$joke->id}}/{{$joke->category_id}}">
@@ -60,21 +59,18 @@
                                 Unlike
                             </button>
                         </a>
-                    @endif
-
-                    <!-- BROJ LAJKOVA POVLACENJE IZ BAZE -->
-                    <?php
-                        $lajkovi = App\likes::where('joke_id',$joke->id)->get();
-                        $brojLajkova = count($lajkovi);
-                    ?>
-
-                    <!-- Ispis broja lajkova -->
-                    <button class="btn btn-primary">
-                        {{$brojLajkova}}
-                    </button>        
-
-                </div>
+                    @endif       
             @endif
+                        <!-- BROJ LAJKOVA POVLACENJE IZ BAZE -->
+                        <?php
+                            $lajkovi = App\likes::where('joke_id',$joke->id)->get();
+                            $brojLajkova = count($lajkovi);
+                        ?>
+
+                        <!-- Ispis broja lajkova -->
+                        <button class="btn btn-primary">
+                            {{$brojLajkova}}
+                        </button> 
 
 
         </div>

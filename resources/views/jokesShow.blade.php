@@ -40,7 +40,7 @@
                 <span id="imeAutora"> 
                     {{$username}}
                 </span>
-                        
+                <br>
                 
 
 
@@ -53,7 +53,7 @@
                         ])->get();
                     ?>
 
-                    <div id="usredini">  
+                     
                         <!-- LIKE -->
                         @if(count($likeCount)==0)
                             <a href="/like/{{$joke->id}}">
@@ -70,7 +70,7 @@
                                 </button>
                             </a>
                         @endif
-
+                @endif
                         <!--BROJ LAJKOVA -->
                         <?php
                             $lajkovi = App\likes::where('joke_id',$joke->id)->get();
@@ -81,10 +81,6 @@
                         <button class="btn btn-primary">
                         {{$brojLajkova}}
                         </button>
-                    </div>
-
-                @endif
-
             </div>
 
 
