@@ -16,6 +16,9 @@
 });
 */
 
+// CHANGE PASSWORD SUBMIT 
+Route::post('changePasswordSubmit', 'profileController@changePasswordSubmit');
+
 //UNLIKE SA TOP VICEVA
 Route::get('/unlikeByTop/{joke_id}', 'likesController@unlikeByTop');
 
@@ -33,6 +36,12 @@ Route::get('/approveJoke/{joke_id}','jokesController@approveJoke');
 
 //APPROVE JOKES DIZAJN 
 Route::get('/approveJokes','jokesController@approveJokesDesign');
+
+
+// vrati dizajn za password change
+Route::get('/changePassword', function(){
+    return view('/myProfile.changePassword');
+});
 
 // change EMAIL execute 
 Route::post('changeEmailSubmit', 'profileController@changeEmailSubmit');

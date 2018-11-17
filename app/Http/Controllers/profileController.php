@@ -7,9 +7,54 @@ use App\jokes;
 use App\category;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Hash;
 
 class profileController extends Controller
 {
+
+    //PROMJENI PASSWORD EXECUTE 
+    public function changePasswordSubmit(Request $request){
+        
+
+        //PROVJERA DA LI JE UNIO SVE INFORMACIJE IZ FORME
+        $this->validate($request,[
+            'currentPassword' => 'required',
+            'newPassword' => 'required',
+            'newPasswordCheck' => 'required'
+        ]);
+
+
+        // PROVJERA DA LI UNIO PRAVILNU STARU SIFRU
+        if(!(Hash::check($request->get('currentPassword'),Auth::user()->password))) {
+            return redirect()->back()->with("error", "Molim unesite tačnu trenutnu lozinku");
+        }
+
+        //PROVJERA DA LI JE NOVA SIFRA ISTA KAO STARA SIFRA
+        if(strcmp($request->get('currentPassword'), $request->get('newPassword')) == 0 ){
+            return redirect()->back()->with("error", "Nova lozinka ne moze biti ista kao stara lozinka");
+        }
+
+        //PROVJERA DA LI JE PRAVILNO POTVRDNO UPISAO SIFRE
+        if(($request->get('newPassword')) != ($request->get('newPasswordCheck'))){
+            return redirect()->back()->with("error","Pravilno upisite lozinke u polja novih lozinki");
+        }
+
+
+       
+
+        // PROMJENA SIFRE 
+        $user = Auth::user();
+        $user->password = bcrypt($request->get('newPassword'));
+        $user->save();
+        return redirect('urediProfil');
+
+
+        
+
+        
+
+
+    }
 
     //promjeni EMAIL execute 
     public function changeEmailSubmit(Request $request){
