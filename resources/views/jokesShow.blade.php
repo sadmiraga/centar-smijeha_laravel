@@ -5,7 +5,7 @@
 
 <?php 
 
-     $jokes = App\jokes::orderBy('id','desc')->get();
+     $jokes = App\jokes::where('approve','yes')->orderBy('id','desc')->get();
      $userID = Auth::id();
      $likes = App\likes::where('user_id',$userID)->get();
 ?>

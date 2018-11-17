@@ -42,6 +42,15 @@ class jokesController extends Controller
         $joke->save();
         return redirect('/approveJokes');
     }
+
+    //DECLINE JOKE EXECUTE
+
+    public function declineJoke($joke_id){
+        $jokes = jokes::findOrFail($joke_id);
+        $jokes->delete();
+        return redirect('/approveJokes');
+    }
+
     
      //DIZAJN ZA APPROVE JOKES
     public function approveJokesDesign(){
@@ -146,7 +155,7 @@ class jokesController extends Controller
     {
         $jokes = jokes::findOrFail($id);
         $jokes->delete();
-        return redirect('/');
+        return redirect('/mojprofil');
     }
 
     public function submit(Request $request){

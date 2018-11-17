@@ -29,7 +29,7 @@ Route::get('/likeByTop/{joke_id}', 'likesController@likeByTop');
 Route::get('/najboljiVicevi','jokesController@bestJokes');
 
 //ODBIJ VIC EXECUTE 
-Route::get('/declineJoke/{joke_id}', 'jokesController@destroy');
+Route::get('/declineJoke/{joke_id}', 'jokesController@declineJoke');
 
 // ODOBRI VIC EXECUTE 
 Route::get('/approveJoke/{joke_id}','jokesController@approveJoke');

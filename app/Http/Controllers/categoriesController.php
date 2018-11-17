@@ -15,7 +15,10 @@ class categoriesController extends Controller
 
     public function show($category_id){
         
-        $jokes = jokes::where('category_id',$category_id)->get();
+        $jokes = jokes::where([
+            'category_id' => $category_id,
+            'approve' => 'yes'
+        ])->get();
 
         return view('jokesbycategory')->with('vicevi',$jokes);
         //return view('jokesbycategory',compact('jokes'))
