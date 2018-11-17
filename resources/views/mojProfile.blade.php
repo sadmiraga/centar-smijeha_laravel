@@ -4,6 +4,10 @@
 @section('content')
 
 <div class="well" id="usredini">
+        <h1> Moj Profil </h1>
+</div>
+
+<div class="well" id="usredini">
     
     <a href="/urediProfil">
         <button class="btn btn-primary" id="dugme">
@@ -24,7 +28,6 @@
 
 
 
-
     <!-- ISPIS SVIH VICEVA OD USER -->
     <?php
     $id = Auth::id();
@@ -33,8 +36,9 @@
 
 @if(count($jokes)>0)
 
+    
     @foreach($jokes as $joke)
-        <div class="alert alert-info">
+        <div class="alert alert-info" id="vic">
 
             <!--TEXT VICA -->
             <p style="text-align:center;">
@@ -56,6 +60,9 @@
             </a>
         </div>
     @endforeach
+
+
+
 
 @else
         <div class="well" id="usredini">

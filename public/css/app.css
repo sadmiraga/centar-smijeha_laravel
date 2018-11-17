@@ -8417,6 +8417,10 @@ button.close {
 
 #vic {
   text-align: center;
+  word-wrap: break-word;
+  width: 50%;
+  margin-right: 25%;
+  margin-left: 25%;
 }
 
 #nisamRobot {
