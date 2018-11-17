@@ -5,7 +5,31 @@
 
 <?php
     $userID = Auth::id();
+
+    //POKUPITI ID OD KATEGORIJE 
+    foreach($vicevi as $joke){
+        $idKategorije = $joke->category_id;
+    }
+
+    //POKUPIT KATEGORJU POMOCU predhodno dobijenog IDa
+    $kategorije = App\category::where('id',$idKategorije)->get();
+
+    //IME KATEGORIJE, provuc kroz foreach i uzet ime kategorije
+    foreach($kategorije as $kategorija){
+        $imeKategorije = $kategorija->categoryName;
+    }
 ?>
+
+<div class="well" id="usredini">
+    <h1> {{$imeKategorije}} </h1>
+</div>
+
+   
+
+
+
+
+
 
 
 <!-- provjeriti da li ima viceva u ovoj kategoriji -->
