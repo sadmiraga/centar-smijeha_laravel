@@ -9,6 +9,45 @@ use Illuminate\Http\Request;
 class likesController extends Controller
 {
 
+    //UNLIKE NA TOP VICEVIMA I VRACANJE NA ISTU KATEGORIJU
+    public function unlikeByTop($joke_id){
+        
+        //id od prijavljenog usera
+        $userID = Auth::id();
+
+        //pokupiti ID iz LIKES po predhodnim parametrima
+        $likeIdTest = likes::where([
+            'user_id' => $userID,
+            'joke_id' => $joke_id
+        ])->get();
+
+        foreach($likeIdTest as $likeIdTestTest){
+            $likeID = $likeIdTestTest->id;
+        }
+
+        //pronadji LIKES i DELETE
+        $like = likes::findOrFail($likeID);
+        $like->delete();
+        return redirect('/najboljiVicevi');
+
+    }
+
+    //LIKE NA TOP VICEVIMA I VRACANJE NA ISTU KATEGORIJU
+    public function likeByTop($joke_id){
+
+        //ID od usera koji je prijaveljen
+        $userID = Auth::id();
+
+        //novi like 
+        $like = new likes;
+        $like->user_id = $userID;
+        $like->joke_id = $joke_id;
+        $like->save();
+
+        //redirect
+        return redirect('/najboljiVicevi');
+    }
+
     //UNLIKE NA VICEVIMA PO KATEGORIJI  I REDIRECT NA VICEVE Iz Te KATEGORIJE
     public function unlikeByCategory($joke_id,$category_id){
         //id od usera koji unlike
@@ -71,7 +110,6 @@ class likesController extends Controller
         $userID = Auth::id();
 
         //uzmi id lajka po predhodnim parametrima
-
         $likeIdTest = likes::where([
             'user_id' => $userID,
             'joke_id' => $joke_id

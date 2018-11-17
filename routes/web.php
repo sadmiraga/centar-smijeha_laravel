@@ -16,6 +16,15 @@
 });
 */
 
+//UNLIKE SA TOP VICEVA
+Route::get('/unlikeByTop/{joke_id}', 'likesController@unlikeByTop');
+
+//LIKE SA TOP VICEVA
+Route::get('/likeByTop/{joke_id}', 'likesController@likeByTop');
+
+//Najbolji vicevi
+Route::get('/najboljiVicevi','jokesController@bestJokes');
+
 //ODBIJ VIC EXECUTE 
 Route::get('/declineJoke/{joke_id}', 'jokesController@destroy');
 

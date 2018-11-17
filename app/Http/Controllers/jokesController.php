@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\jokes;
 use App\category;
 use Illuminate\Support\Facades\Auth;
+use App\User;
+
+use Illuminate\Support\Facades\DB;
 
 class jokesController extends Controller
 {
@@ -14,6 +17,22 @@ class jokesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //BEST JOKES 
+    public function bestJokes(){
+        
+        // VICEVI PO BROJU LAJKOVA
+        // SALJE --- joke.id, joke.jokeText, joke.user_id
+        $vicevi = jokes::join('likes', 'jokes.id', '=', 'likes.joke_id')
+                ->select(DB::raw('count(*) as brojLajkova,jokes.id,jokes.jokeText,jokes.user_id'))
+                ->where('approve','yes')
+                ->groupBy('jokes.id','jokes.jokeText','jokes.user_id')
+                ->orderBy('brojLajkova','desc')
+                ->get();
+        
+        return view('bestJokes')->with('jokes',$vicevi);
+    }
+
 
     //APPROVE JOKE EXECUTE
     public function approveJoke($joke_id){
@@ -150,7 +169,6 @@ class jokesController extends Controller
         $jokes->save();
 
         //redirect
-
         return redirect('/');
     }
 
