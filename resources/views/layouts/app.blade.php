@@ -91,7 +91,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
         <footer id="footer" class="text-center">
             <p><a href="https://www.instagram.com/centar_smijeha/"> Instagram </a> </p>
-            <p><a href="https://www.facebook.com/sadmir.hasanic.5"> Facebook </a> </p>
+            <p><a href="https://www.facebook.com/Centar-smijeha-2111595259095133"> Facebook </a> </p>
             <p><a href="https://twitter.com/CSmijeha"> Twitter </a> </p>
         </footer>
 </body>
