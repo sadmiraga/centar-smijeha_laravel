@@ -134,6 +134,15 @@ class jokesController extends Controller
         $jokes = jokes::find($id);
         $jokes->jokeText = $request->input('jokeText');
         $jokes->category_id = $request->input('category_id');
+
+        // Pokupiti nivo korisnika
+        $userRole = Auth::user()->role;
+
+        //ako je head admin promjenio svoju šalu da ne mjenja apporve nego samo za obicne korisniek
+        if($userRole != 1){
+            $jokes->approve = 'no';
+        }
+        
         if($user = Auth::user()){
             $jokes->user_id = Auth::id();
         }
@@ -160,11 +169,19 @@ class jokesController extends Controller
 
     public function submit(Request $request){
 
-        // da li su poslani svi podatci
-        $this->validate($request, [
-            'jokeText' => 'required',
-            'g-recaptcha-response' => 'required|captcha'
-        ]);
+
+        //PROVJERA PODATAKA ZA GOSTA
+        if(Auth::guest()){
+            $this->validate($request, [
+                'jokeText' => 'required',
+                'g-recaptcha-response' => 'required|captcha'            
+            ]);
+        //PROVJERA PODATAKA ZA KORISNIKA
+        } else {
+            $this->validate($request, [
+                'jokeText' => 'required',  
+            ]);
+        }
 
         
         

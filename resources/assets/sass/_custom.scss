@@ -40,6 +40,8 @@
     text-align: center;
     margin-right: 25%;
     margin-left: 25%;
+    white-space: normal;
+    word-wrap:break-word;
 }
 
 #likeUnlikeButton{
@@ -82,4 +84,28 @@
 #recaptcha-box{
     width:304px;
     margin: 0 auto;
+}
+
+
+#tabelaImeAutora{
+    width: 15%;
+}
+
+#tabelaJokeText{
+    white-space: normal;
+    word-wrap:break-word;
+    width: 40%;
+}
+
+#tabelaImeKategorije{
+    width: 15%;
+}
+
+#odobri_odbij{
+    width:15%;
+}
+
+
+table td {
+    word-break: break-all;
 }

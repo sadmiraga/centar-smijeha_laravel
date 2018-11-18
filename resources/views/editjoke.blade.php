@@ -22,11 +22,16 @@
             </div>
         @endforeach
     @endif
-    
+
+
+    <div class="well" id="usredini">
     {!! Form::open(['action'=>['jokesController@update',$joke_id],'method'=>'POST']) !!}
         <div class="form-group" id="submitform">
-            {{Form::textarea('jokeText',"$jokeValue", ['class' => 'form-control', 'rows'=>'3', 'cols'=>'2'] )}}
-            <select name="category_id">
+            {{Form::textarea('jokeText',"$jokeValue", ['class' => 'form-control', 'rows'=>'10', 'cols'=>'2'] )}}
+            <br>
+
+            <!-- DROPDOWN -->
+            <select class="form-control" name="category_id">
                 @foreach ($categories as $category)
                     @if(($category->id)==$jokeCategoryID)
                     <option selected="selected" value ={{$category->id}}> {{$category->categoryName}} </option>
@@ -45,7 +50,7 @@
             {{Form::submit('Spremi',['class'=>'btn btn-primary'])}}
         </div>
     {!! Form::close() !!}
-
+    </div>
 
 
 

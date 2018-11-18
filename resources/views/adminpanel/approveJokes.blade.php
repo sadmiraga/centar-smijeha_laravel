@@ -8,6 +8,7 @@
         <thead>
                 <th scope="col">Ime autora</th>
                 <th scope="col">Text vica</th>
+                <th scope="col">Kategorija</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
         </thead>
@@ -24,15 +25,28 @@
                 ?>
 
                 <tr>
-                    <td>
+                    <td id="tabelaImeAutora">
                         {{$imeAutora}}
                     </td>
 
-                    <td>
+                    <td id="tabelaJokeText">
                         {{$joke->jokeText}}
                     </td>
 
-                    <td>
+                    <td id="tabelaImeKategorije">
+                        <!--TAKE CATEGORY NAME -->
+                        <?php
+                            $categories = App\category::where('id',$joke->category_id)->get();
+
+                            //provuci kroz foreach
+                            foreach($categories as $category){
+                                $imeKategorije = $category->categoryName;
+                            }
+                        ?>
+                        {{$imeKategorije}}
+                    </td>
+
+                    <td id="odobri_odbij">
                         <button onclick='location.href="/approveJoke/{{$joke->id}}"' class="btn btn-success">
                             Odobri
                         </button>

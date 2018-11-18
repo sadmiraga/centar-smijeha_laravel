@@ -35,18 +35,24 @@
                 </select>
             </div>
 
+            @if(Auth::guest())
+                <!-- reCAPTCHA -->
+                <div id="recaptcha-box">
+                        {!! NoCaptcha::renderJs() !!}
+                        {!! NoCaptcha::display() !!}
+                </div>
+                <br> 
+            @endif
+
+            <!--submit -->
             <div class="text-center">
                 {{Form::submit('Pošalji',['class'=>'btn btn-primary'])}}
             </div>
+
+            {!! Form::close() !!}
     </div>
 
-    @if(Auth::guest())
-        {!! Form::close() !!}
-        <!-- reCAPTCHA -->
-        <div id="recaptcha-box">
-            {!! NoCaptcha::renderJs() !!}
-            {!! NoCaptcha::display() !!}
-        </div>
-    @endif
+
+        
     
 @endsection
