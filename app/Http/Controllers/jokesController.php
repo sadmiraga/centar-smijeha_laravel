@@ -159,9 +159,16 @@ class jokesController extends Controller
     }
 
     public function submit(Request $request){
+
+        // da li su poslani svi podatci
         $this->validate($request, [
-            'jokeText' => 'required'
+            'jokeText' => 'required',
+            'g-recaptcha-response' => 'required|captcha'
         ]);
+
+        
+        
+    
         
         //novi vic
         $jokes = new jokes;

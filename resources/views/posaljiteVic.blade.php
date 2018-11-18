@@ -33,24 +33,20 @@
                         <option value ={{$category->id}}> {{$category->categoryName}} </option>    
                     @endforeach
                 </select>
-                
-
             </div>
-
-
 
             <div class="text-center">
                 {{Form::submit('Pošalji',['class'=>'btn btn-primary'])}}
             </div>
-
-            <!-- I AM NOT ROBOT -->
-            <div id="nisamRobot" class="g-recaptcha" data-sitekey="{{env('NOCAPTCHA_SITEKEY')}}"></div>
-            @if($errors->has('g-recaptcha-response'))
-                <span class="invalid-feedback" style="display:block">
-                    <strong>{{$errors->first('g-recaptcha-response')}} </strong>
-                </span>
-            @endif
-        {!! Form::close() !!}
     </div>
+
+    @if(Auth::guest())
+        {!! Form::close() !!}
+        <!-- reCAPTCHA -->
+        <div id="recaptcha-box">
+            {!! NoCaptcha::renderJs() !!}
+            {!! NoCaptcha::display() !!}
+        </div>
+    @endif
     
 @endsection

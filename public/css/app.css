@@ -8428,3 +8428,8 @@ button.close {
   float: center;
 }
 
+#recaptcha-box {
+  width: 304px;
+  margin: 0 auto;
+}
+
