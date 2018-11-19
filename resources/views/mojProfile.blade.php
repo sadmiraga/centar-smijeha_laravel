@@ -38,11 +38,21 @@
 
     
     @foreach($jokes as $joke)
-        <div class="alert alert-info" id="vic">
 
+        <!-- boja u zavosnosti da li je objavljen ili ne -->
+        @if(($joke->approve)=='no')
+            <div class="alert alert-danger" id="vic">
+        @else
+            <div class="alert alert-info" id="vic">
+        @endif
+
+        
+            
             <!--TEXT VICA -->
             <p style="text-align:center;">
-                {{$joke->jokeText}}    
+                <?php
+                    echo nl2br($joke->jokeText);
+                ?>            
             </p>
 
             <!-- IZBRIŠI VIC -->
@@ -58,6 +68,11 @@
                     Uredi
                 </button>
             </a>
+
+            @if(($joke->approve)=='no')
+                <p id="nijeOdobren"> Vaš vic još nije odobren od strane admina </p>
+            @endif
+
         </div>
     @endforeach
 

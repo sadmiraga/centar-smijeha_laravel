@@ -92,7 +92,7 @@
                         ?>
 
                         <!-- Ispis broja lajkova -->
-                        <button class="btn btn-primary">
+                        <button id="brojLajkova" class="btn btn-primary">
                             {{$brojLajkova}}
                         </button> 
 

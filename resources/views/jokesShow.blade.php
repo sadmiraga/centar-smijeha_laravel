@@ -29,14 +29,17 @@
         ?>
 
 
-        
+
             
             <!-- TEXT VICA -->
             <div class="alert alert-info" id="vic">
                 <!-- text vica -->
                 <p style="text-align:center;" id="textVica">
-                        {{$joke->jokeText}}
+                    <?php
+                        echo nl2br($joke->jokeText);
+                    ?>  
                 </p>
+                <!--ime Autora -->
                 <span id="imeAutora"> 
                     {{$username}}
                 </span>
@@ -78,8 +81,8 @@
                         ?>
                         
                         
-                        <button class="btn btn-primary">
-                        {{$brojLajkova}}
+                        <button id="brojLajkova" disabled class="btn btn-primary">
+                            {{$brojLajkova}}
                         </button>
             </div>
 
