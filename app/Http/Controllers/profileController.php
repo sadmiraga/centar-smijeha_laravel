@@ -40,19 +40,11 @@ class profileController extends Controller
         }
 
 
-       
-
         // PROMJENA SIFRE 
         $user = Auth::user();
         $user->password = bcrypt($request->get('newPassword'));
         $user->save();
         return redirect('urediProfil');
-
-
-        
-
-        
-
 
     }
 

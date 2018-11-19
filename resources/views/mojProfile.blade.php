@@ -31,7 +31,7 @@
     <!-- ISPIS SVIH VICEVA OD USER -->
     <?php
     $id = Auth::id();
-    $jokes = App\jokes::where('user_id',$id)->get();
+    $jokes = App\jokes::where('user_id',$id)->orderBy('created_at','DESC')->get();
     ?>
 
 @if(count($jokes)>0)

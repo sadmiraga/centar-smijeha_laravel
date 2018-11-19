@@ -18,7 +18,7 @@ class categoriesController extends Controller
         $jokes = jokes::where([
             'category_id' => $category_id,
             'approve' => 'yes'
-        ])->get();
+        ])->orderBy('created_at','DESC')->get();
 
         return view('jokesbycategory')->with('vicevi',$jokes);
         //return view('jokesbycategory',compact('jokes'))
