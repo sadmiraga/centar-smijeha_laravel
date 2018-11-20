@@ -30,7 +30,9 @@
                     </td>
 
                     <td id="tabelaJokeText">
-                        {{$joke->jokeText}}
+                        <?php
+                            echo nl2br($joke->jokeText);
+                        ?>
                     </td>
 
                     <td id="tabelaImeKategorije">
