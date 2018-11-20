@@ -7,6 +7,7 @@ use App\jokes;
 use App\category;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Session;
 
 use Illuminate\Support\Facades\DB;
 
@@ -202,7 +203,16 @@ class jokesController extends Controller
         $jokes->save();
 
         //redirect
-        return redirect('/');
+        //return redirect('/posaljitevic');
+
+        // SUCCESS poruka za korisnika
+        if($user = Auth::user()){
+            return redirect()->back()->with('successMessage','Vaš vic je poslan, prije nego što vic bude objavljen potrebno je da bude odobren od strane admina. Stanje vaseg vica možete da provjerite na vašem profilu');
+        } else {
+            return redirect()->back()->with('successMessage','Vaš vic je poslan, prije nego što vic bude objavljen potrebno je da bude odobren od strane admina.');
+        }
+        
+
     }
 
     
