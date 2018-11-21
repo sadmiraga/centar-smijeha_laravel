@@ -27,7 +27,9 @@
 
                 <!-- ispis TEXTa vica -->
                 <p style="style=align:center;" id="textVica">
-                    {{$joke->jokeText}}
+                    <?php
+                        echo nl2br($joke->jokeText);
+                    ?>  
                 </p>
 
                 <!-- ispis imena autora -->
@@ -69,7 +71,7 @@
                 ?>
 
                 <!-- Ispis broja lajkova -->
-                <button class="btn btn-primary">
+                <button id="brojLajkova" disabled class="btn btn-primary">
                     {{$brojLajkova}}
                 </button> 
 
