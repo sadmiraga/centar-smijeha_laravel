@@ -15,6 +15,17 @@ class likesController extends Controller
         //id od prijavljenog usera
         $userID = Auth::id();
 
+        //Provjera da li je user vec Like taj vic
+        $likeCheck = likes::where([
+            'joke_id' => $joke_id,
+            'user_id' => $userID
+        ])->get();
+        
+        //prevent unlike spam
+        if(count($likeCheck)==0){
+            return redirect()->back();
+        }
+
         //pokupiti ID iz LIKES po predhodnim parametrima
         $likeIdTest = likes::where([
             'user_id' => $userID,
@@ -38,6 +49,18 @@ class likesController extends Controller
         //ID od usera koji je prijaveljen
         $userID = Auth::id();
 
+        //Provjera da li je user vec Like taj vic
+        $likeCheck = likes::where([
+            'joke_id' => $joke_id,
+            'user_id' => $userID
+        ])->get();
+
+        //prevent like spam
+        if(count($likeCheck)>0){
+            return redirect()->back();
+        }
+
+
         //novi like 
         $like = new likes;
         $like->user_id = $userID;
@@ -50,11 +73,22 @@ class likesController extends Controller
 
     //UNLIKE NA VICEVIMA PO KATEGORIJI  I REDIRECT NA VICEVE Iz Te KATEGORIJE
     public function unlikeByCategory($joke_id,$category_id){
+
         //id od usera koji unlike
         $userID = Auth::id();
 
-        //uzmi id lajka po predhodnim parametrima
+        //Provjera da li je user vec Like taj vic
+        $likeCheck = likes::where([
+            'joke_id' => $joke_id,
+            'user_id' => $userID
+        ])->get();
 
+        //prevent unlike spam
+        if(count($likeCheck)==0){
+            return redirect()->back();
+        }
+
+        //uzmi id lajka po predhodnim parametrima
         $likeIdTest = likes::where([
             'user_id' => $userID,
             'joke_id' => $joke_id
@@ -75,6 +109,17 @@ class likesController extends Controller
 
         //ID od usera koji je prijavljen
         $userID = Auth::id();
+
+        //Provjera da li je user vec Like taj vic
+        $likeCheck = likes::where([
+            'joke_id' => $joke_id,
+            'user_id' => $userID
+        ])->get();
+
+        //prevent like spam
+        if(count($likeCheck)>0){
+            return redirect()->back();
+        }
         
         //novi LIKE
         $like = new likes;
@@ -92,6 +137,18 @@ class likesController extends Controller
         
         //ID od usera koji je prijavljen
         $userID = Auth::id();
+
+        //Provjera da li je user vec Like taj vic
+        $likeCheck = likes::where([
+            'joke_id' => $joke_id,
+            'user_id' => $userID
+        ])->get();
+
+
+        //Spriječavanje LIKE SPAM na početnoj
+        if(count($likeCheck)>0){
+            return redirect()->back();
+        }
         
         //novi LIKE
         $like = new likes;
@@ -108,6 +165,17 @@ class likesController extends Controller
 
         //id od usera koji unlike
         $userID = Auth::id();
+
+        //potrazit iz baze da li je user lajko taj vic
+        $likeCheck = likes::where([
+            'joke_id' => $joke_id,
+            'user_id' => $userID
+        ])->get();
+
+        //spriječavanje unlike spamma
+        if(count($likeCheck)==0){
+            return redirect()->back();
+        }
 
         //uzmi id lajka po predhodnim parametrima
         $likeIdTest = likes::where([
