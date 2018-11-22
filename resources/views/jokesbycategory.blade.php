@@ -49,7 +49,9 @@
 
             <!-- ispis TEXTa vica -->
             <p style="style=align:center;" id="textVica">
-                {{$joke->jokeText}}
+                <?php
+                    echo $joke->jokeText;
+                ?>
             </p>
             
             <!-- ispis imena autora -->
