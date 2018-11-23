@@ -12,6 +12,11 @@ class likesController extends Controller
     //UNLIKE NA TOP VICEVIMA I VRACANJE NA ISTU KATEGORIJU
     public function unlikeByTop($joke_id){
         
+        //provjeriti da li je prijavljen
+        if(Auth::guest()){
+            return redirect('/login');
+        }
+
         //id od prijavljenog usera
         $userID = Auth::id();
 
@@ -46,6 +51,11 @@ class likesController extends Controller
     //LIKE NA TOP VICEVIMA I VRACANJE NA ISTU KATEGORIJU
     public function likeByTop($joke_id){
 
+        //provjeriti da li je prijavljen
+        if(Auth::guest()){
+            return redirect('/login');
+        }
+
         //ID od usera koji je prijaveljen
         $userID = Auth::id();
 
@@ -73,6 +83,11 @@ class likesController extends Controller
 
     //UNLIKE NA VICEVIMA PO KATEGORIJI  I REDIRECT NA VICEVE Iz Te KATEGORIJE
     public function unlikeByCategory($joke_id,$category_id){
+
+        //provjeriti da li je prijavljen
+        if(Auth::guest()){
+            return redirect('/login');
+        }
 
         //id od usera koji unlike
         $userID = Auth::id();
@@ -107,6 +122,11 @@ class likesController extends Controller
     //LIKE NA VICEVIMA PO KATEGORIJI  I REDIRECT NA VICEVE Iz Te KATEGORIJE
     public function likeByCategory($joke_id,$category_id){
 
+        //provjeriti da li je prijavljen
+        if(Auth::guest()){
+            return redirect('/login');
+        }
+
         //ID od usera koji je prijavljen
         $userID = Auth::id();
 
@@ -135,6 +155,12 @@ class likesController extends Controller
     //LIKE NA POCETNOJ
     public function like($joke_id){
         
+        //provjeriti da li je prijavljen
+        if(Auth::guest()){
+            return redirect('/login');
+        }
+
+
         //ID od usera koji je prijavljen
         $userID = Auth::id();
 
@@ -162,6 +188,11 @@ class likesController extends Controller
 
     //UNLIKE NA POCETNOJ
     public function unlike($joke_id){
+
+        //provjeriti da li je prijavljen
+        if(Auth::guest()){
+            return redirect('/login');
+        }
 
         //id od usera koji unlike
         $userID = Auth::id();
