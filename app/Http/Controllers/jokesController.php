@@ -205,7 +205,16 @@ class jokesController extends Controller
      */
     public function destroy($id)
     {
-        //pronadji user_id iz fore 
+        //provjerit da li uopste da fora postoji 
+        $jokesTest = jokes::where('id', $id);
+        
+        if(count($jokesTest)==0){
+            return redirect()->back();
+        }
+            
+        
+        
+        //pokupit ID od predhodno pokupljenog objekta
         $fora = jokes::find($id);
         $userIdCheck = $fora->user_id;
 

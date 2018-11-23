@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
+use App\jokes;
 
 class usersController extends Controller
 {
@@ -19,8 +20,19 @@ class usersController extends Controller
             if((Auth::user()->role)!=1){
                 return redirect('/mojprofil');
             } else {
-            //prosao kroz sve uslove i izvrsava se execute
+            //EXECUTE
+                //izbrisi usera
                 $user = User::findOrFail($user_id);
+                
+                //pronadji sve fore od korisnika koji treba da bude izbrisan
+                $jokesFromExUser = jokes::where('user_id',$user_id)->get();
+
+                //pobrisi sve fore od tog korisnika
+                foreach($jokesFromExUser as $jokeFromExUser){
+                    $jokeFromExUser->delete();
+                }
+
+                //izbrisi korisnika
                 $user->delete();
                 return redirect('/manageUsers');
             }
