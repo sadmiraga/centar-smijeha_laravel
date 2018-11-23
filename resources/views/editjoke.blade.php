@@ -13,7 +13,7 @@
         $jokeCategoryID = $joke->category_id;
     }
 ?>
-    {{$jokeCategoryID}}
+    
 
     @if(count($errors)>0)
         @foreach($errors->all() as $error)

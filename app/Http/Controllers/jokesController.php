@@ -38,18 +38,40 @@ class jokesController extends Controller
     //APPROVE JOKE EXECUTE
     public function approveJoke($joke_id){
         
-        $joke = jokes::find($joke_id);
-        $joke ->approve = 'yes';
-        $joke->save();
-        return redirect('/approveJokes');
+        //provjerit da li je user uopste prijavljen
+        if(Auth::guest()){
+            return redirect('/login');
+        } else {
+
+            //provjeriti da li je lik uopste admin ili head admin 
+            if((Auth::user()->role)==1 || (Auth::user()->role)==2){
+                $joke = jokes::find($joke_id);
+                $joke ->approve = 'yes';
+                $joke->save();
+                return redirect('/approveJokes');
+            } else {
+                // ako obicni korisnik pokusa da odobrava viceve
+                return redirect('/mojprofil');
+            }
+        }
     }
 
     //DECLINE JOKE EXECUTE
 
     public function declineJoke($joke_id){
-        $jokes = jokes::findOrFail($joke_id);
-        $jokes->delete();
-        return redirect('/approveJokes');
+
+        //provjeriti da li je uopste prijavljen 
+        if(Auth::guest()){
+            return redirect('/login');
+        } else {
+            if(Auth::user()->role == 1 || Auth::user()->role == 2){
+                $jokes = jokes::findOrFail($joke_id);
+                $jokes->delete();
+                return redirect('/approveJokes');
+            } else {
+                return redirect('/mojprofil');
+            }
+        }
     }
 
     
@@ -59,7 +81,17 @@ class jokesController extends Controller
         // pokupiti sve viceve koji nisu odobreni
         $jokesToApprove = jokes::where('approve','no')->get();
 
-        return view('adminpanel.approveJokes')->with('jokes',$jokesToApprove);
+        //provjeriti da li gost pokusava da dostupi do Approve jokes 
+        if(Auth::guest()){
+            return redirect('/login');
+        } else {
+            //provjerit da lije admin ili head admin
+            if(((Auth::user()->role)==1) || (Auth::user()->role==2)){
+                return view('adminpanel.approveJokes')->with('jokes',$jokesToApprove);
+            } else {
+                return redirect('/mojprofil');
+            }
+        }   
     }
 
 
@@ -111,7 +143,17 @@ class jokesController extends Controller
      */
     public function edit($id)
     {
-        return view('editjoke')->with('joke_id',$id);
+        //pokupiti user_id od ove fore, tj da vidimo ko je objavio radi verifikacije
+        $fora = jokes::find($id);
+        $AuthorID = $fora->user_id;
+
+        // provjeriti da li korisnik pokusava da uredi tuđu foru
+        if((Auth::id()) != $AuthorID){
+            return redirect('/mojprofil');
+        } else {
+            //ako je prosao sve provjerete da se vrati edit joke design
+            return view('editjoke')->with('joke_id',$id);
+        }
     }
 
     /**
@@ -163,6 +205,20 @@ class jokesController extends Controller
      */
     public function destroy($id)
     {
+        //pronadji user_id iz fore 
+        $fora = jokes::find($id);
+        $userIdCheck = $fora->user_id;
+
+        //pokusava da izbrise vic kao gost
+        if(Auth::guest()){
+            return redirect('/login');
+        } else {
+            // user pokusava da izbrise tudji vic
+            if((Auth::id())!= $userIdCheck){
+                return redirect('/mojprofil');
+            }
+        }
+        
         $jokes = jokes::findOrFail($id);
         $jokes->delete();
         return redirect('/mojprofil');

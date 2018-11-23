@@ -40,6 +40,9 @@ Route::get('/approveJokes','jokesController@approveJokesDesign');
 
 // vrati dizajn za password change
 Route::get('/changePassword', function(){
+    if(Auth::guest()){
+        return redirect('/login');
+    }
     return view('/myProfile.changePassword');
 });
 
@@ -48,6 +51,11 @@ Route::post('changeEmailSubmit', 'profileController@changeEmailSubmit');
 
 // vrati dizajn za change EMAIL 
 Route::get('/changeEmail', function(){
+
+    if(Auth::guest()){
+        return redirect('/login');
+    }
+
     return view('myProfile.changeEmail');
 });
 
@@ -57,6 +65,11 @@ Route::post('changeUsernameSubmit','profileController@changeUsernameSubmit');
 
 // VRATI DIZAJN ZA CHANGE USERNAME
 Route::get('/changeUsername', function(){
+
+    if(Auth::guest()){
+        return redirect('/login');
+    }
+
     return view('myProfile.changeUsername');
 });
 
@@ -85,10 +98,6 @@ Route::get('/editUser/{user_id}', 'usersController@update');
 //IZBRIŠI KORISNIKA
 Route::get('/deleteUser/{user_id}','usersController@destroy');
 
-//upravljanje korisnicima
-Route::get('/manageUsers', function(){
-    return view('adminpanel.manageUsers');
-});
 
 Route::get('/manageUsers', 'profileController@manageUsers');
 
@@ -132,25 +141,10 @@ Route::get('/home', function(){
 
 
 
-
-Route::get('/admin', function(){
-    return 'Ti si sad kao admin jel?';
-});
-
-Route::get('/users/{username}',function($username){
-    return 'Ovo je stranica od '. $username;
-});
-
-
 Route::get('kategorije/{category_id}', 'categoriesController@show');
 
 //Route::get('jokes/destroy', 'jokesController@destroy');
 
-
-
-Route::get('/alljokes',function(){
-    return view('jokesShow');
-});
 
 Route::resource('jokes','jokesController');
 

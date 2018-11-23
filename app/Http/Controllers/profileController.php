@@ -83,6 +83,12 @@ class profileController extends Controller
 
     // uredi profil DIZAJn
     public function urediProfilDizajn(){
+
+        //Uredi profil filter za usera
+        if(Auth::guest()){
+            return redirect('/login');
+        }
+
         return view ('urediProfil');
     }
 
@@ -92,9 +98,10 @@ class profileController extends Controller
 
     public function index(){
         
-        //$jokes = jokes::where('user_id',$userID)->get();
-
-        //return view('mojProfile')->with('viceviOdUsera',$jokes);
+        // AKO GOST POKUSA DA DOSTUPI DO TUĐEG rute /mojprofil
+        if(Auth::guest()){
+            return redirect('/login');
+        }
 
         return view('mojProfile');
     }
@@ -104,15 +111,24 @@ class profileController extends Controller
         //head admin stranica
         if((Auth::user()->role)==1){
             return view('adminpanel.headAdminPanel');
+
         //regularni admin stranica
         } else if((Auth::user()->role)==2){
             return view('adminpanel.homeAdminPanel');
+            
+        //vracanje na moj profil u slucaju da korisnik preko linka pokusa da dodje do admin panel stranice
+        } else if((Auth::user()->role)==3){
+            return redirect('/mojprofil');
         }
     }
 
     //vracanje izgleda stranice za dodavanje kategorije
     public function dodajKategoriju(){
-        return view('adminpanel.dodajKategoriju');
+        if((Auth::user()->role)==2 || (Auth::user()->role)==1){
+            return view('adminpanel.dodajKategoriju');
+        } else {
+            return redirect('/mojprofil');
+        }
     }
 
     //dodavanje kategorije u bazu
@@ -134,7 +150,20 @@ class profileController extends Controller
     }
 
     public function manageUsers(){
-        return view('adminpanel.manageUsers');
+
+
+        // da li je user prijavljen 
+        if(Auth::guest()){
+            return redirect('/login');
+        } else {
+            // da li je user prijavljen i da li je head admin 
+            if((Auth::user()->role)==1){
+                return view('adminpanel.manageUsers');
+            } else {
+                return redirect('mojprofil');
+            }
+        }
+        
     }
 
 }
