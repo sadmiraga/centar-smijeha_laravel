@@ -21,9 +21,18 @@ class usersController extends Controller
                 return redirect('/mojprofil');
             } else {
             //EXECUTE
+                
+                //provjeriti da li taj korisnik uopste postoji
+                $userExistCount = User::where('id',$user_id)->get();
+
+                //ako ne postoji ne dozvolit brisanje korisnika
+                if(count($userExistCount)==0){
+                    return redirect()->back();
+                } 
+
                 //izbrisi usera
                 $user = User::findOrFail($user_id);
-                
+
                 //pronadji sve fore od korisnika koji treba da bude izbrisan
                 $jokesFromExUser = jokes::where('user_id',$user_id)->get();
 

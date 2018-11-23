@@ -6,23 +6,26 @@
 <?php
     $userID = Auth::id();
 
+
+    if(count($vicevi)!=0){
+
     //POKUPITI ID OD KATEGORIJE 
-    foreach($vicevi as $joke){
-        $idKategorije = $joke->category_id;
-    }
+        foreach($vicevi as $joke){
+            $idKategorije = $joke->category_id;
+        }
 
-    //POKUPIT KATEGORJU POMOCU predhodno dobijenog IDa
-    $kategorije = App\category::where('id',$idKategorije)->get();
+        //POKUPIT KATEGORJU POMOCU predhodno dobijenog IDa
+        $kategorije = App\category::where('id',$idKategorije)->get();
 
-    //IME KATEGORIJE, provuc kroz foreach i uzet ime kategorije
-    foreach($kategorije as $kategorija){
-        $imeKategorije = $kategorija->categoryName;
+        //IME KATEGORIJE, provuc kroz foreach i uzet ime kategorije
+        foreach($kategorije as $kategorija){
+            $imeKategorije = $kategorija->categoryName;
+        }
     }
 ?>
 
-<div class="well" id="usredini">
-    <h1> {{$imeKategorije}} </h1>
-</div>
+
+
 
    
 
@@ -34,6 +37,12 @@
 
 <!-- provjeriti da li ima viceva u ovoj kategoriji -->
 @if(count($vicevi)>0)
+
+    <!-- ispis naslova ako ima fori -->
+    <div class="well" id="usredini">
+        <h1> {{$imeKategorije}} </h1>
+    </div>
+
     @foreach ($vicevi as $joke)
 
         <!-- select USERNAME od authora -->
@@ -102,7 +111,9 @@
         </div>
     @endforeach
 @else
-    <p> Nema viceva u ovoj kategoriji </p>
+    <div class="well" id="usredini">
+    <h1> Nema viceva u ovoj kategoriji </h1>
+    </div>
 @endif
 
 

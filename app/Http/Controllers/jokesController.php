@@ -206,7 +206,7 @@ class jokesController extends Controller
     public function destroy($id)
     {
         //provjerit da li uopste da fora postoji 
-        $jokesTest = jokes::where('id', $id);
+        $jokesTest = jokes::where('id', $id)->get();
         
         if(count($jokesTest)==0){
             return redirect()->back();
