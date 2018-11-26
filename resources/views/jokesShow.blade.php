@@ -5,7 +5,7 @@
 
 <?php 
 
-     $jokes = App\jokes::orderBy('id','desc')->get();
+     $jokes = App\jokes::where('approve','yes')->orderBy('id','desc')->get();
      $userID = Auth::id();
      $likes = App\likes::where('user_id',$userID)->get();
 ?>
@@ -29,18 +29,21 @@
         ?>
 
 
-        
+
             
             <!-- TEXT VICA -->
             <div class="alert alert-info" id="vic">
                 <!-- text vica -->
                 <p style="text-align:center;" id="textVica">
-                        {{$joke->jokeText}}
+                    <?php
+                        echo nl2br($joke->jokeText);
+                    ?>  
                 </p>
+                <!--ime Autora -->
                 <span id="imeAutora"> 
                     {{$username}}
                 </span>
-                        
+                <br>
                 
 
 
@@ -53,7 +56,7 @@
                         ])->get();
                     ?>
 
-                    <div id="usredini">  
+                     
                         <!-- LIKE -->
                         @if(count($likeCount)==0)
                             <a href="/like/{{$joke->id}}">
@@ -70,7 +73,7 @@
                                 </button>
                             </a>
                         @endif
-
+                @endif
                         <!--BROJ LAJKOVA -->
                         <?php
                             $lajkovi = App\likes::where('joke_id',$joke->id)->get();
@@ -78,13 +81,9 @@
                         ?>
                         
                         
-                        <button class="btn btn-primary">
-                        {{$brojLajkova}}
+                        <button id="brojLajkova" disabled class="btn btn-primary">
+                            {{$brojLajkova}}
                         </button>
-                    </div>
-
-                @endif
-
             </div>
 
 

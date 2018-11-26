@@ -16,8 +16,71 @@
 });
 */
 
+// CHANGE PASSWORD SUBMIT 
+Route::post('changePasswordSubmit', 'profileController@changePasswordSubmit');
 
-Route::get('/like/{joke_id}', 'likesController@unlikeCategory');
+//UNLIKE SA TOP VICEVA
+Route::get('/unlikeByTop/{joke_id}', 'likesController@unlikeByTop');
+
+//LIKE SA TOP VICEVA
+Route::get('/likeByTop/{joke_id}', 'likesController@likeByTop');
+
+//Najbolji vicevi
+Route::get('/najboljiVicevi','jokesController@bestJokes');
+
+//ODBIJ VIC EXECUTE 
+Route::get('/declineJoke/{joke_id}', 'jokesController@declineJoke');
+
+// ODOBRI VIC EXECUTE 
+Route::get('/approveJoke/{joke_id}','jokesController@approveJoke');
+
+//APPROVE JOKES DIZAJN 
+Route::get('/approveJokes','jokesController@approveJokesDesign');
+
+
+// vrati dizajn za password change
+Route::get('/changePassword', function(){
+    if(Auth::guest()){
+        return redirect('/login');
+    }
+    return view('/myProfile.changePassword');
+});
+
+// change EMAIL execute 
+Route::post('changeEmailSubmit', 'profileController@changeEmailSubmit');
+
+// vrati dizajn za change EMAIL 
+Route::get('/changeEmail', function(){
+
+    if(Auth::guest()){
+        return redirect('/login');
+    }
+
+    return view('myProfile.changeEmail');
+});
+
+
+// EXECUTE CHANGE USERNAME
+Route::post('changeUsernameSubmit','profileController@changeUsernameSubmit');
+
+// VRATI DIZAJN ZA CHANGE USERNAME
+Route::get('/changeUsername', function(){
+
+    if(Auth::guest()){
+        return redirect('/login');
+    }
+
+    return view('myProfile.changeUsername');
+});
+
+//UREDI PROFIL DIZAJN 
+Route::get('urediProfil', 'profileController@urediProfilDizajn');
+
+//UNLIKE SA VICEVA PO KATEGORIJI i VRACA NA VICEVE IZ TE KATEGORIJE
+Route::get('/unlikeByCategory/{joke_id}/{category_id}','likesController@unlikeByCategory');
+
+//LIKE SA VICEVA PO KATEGORIJI i VRACA NA VICEVE IZ TE KATEGORIJE
+Route::get('/likeByCategory/{joke_id}/{category_id}', 'likesController@likeByCategory');
 
 //UNLIKE SA POCETNE EXECUTE
 Route::get('/unlike/{like_id}', 'likesController@unlike');
@@ -35,10 +98,6 @@ Route::get('/editUser/{user_id}', 'usersController@update');
 //IZBRIŠI KORISNIKA
 Route::get('/deleteUser/{user_id}','usersController@destroy');
 
-//upravljanje korisnicima
-Route::get('/manageUsers', function(){
-    return view('adminpanel.manageUsers');
-});
 
 Route::get('/manageUsers', 'profileController@manageUsers');
 
@@ -82,25 +141,10 @@ Route::get('/home', function(){
 
 
 
-
-Route::get('/admin', function(){
-    return 'Ti si sad kao admin jel?';
-});
-
-Route::get('/users/{username}',function($username){
-    return 'Ovo je stranica od '. $username;
-});
-
-
 Route::get('kategorije/{category_id}', 'categoriesController@show');
 
 //Route::get('jokes/destroy', 'jokesController@destroy');
 
-
-
-Route::get('/alljokes',function(){
-    return view('jokesShow');
-});
 
 Route::resource('jokes','jokesController');
 

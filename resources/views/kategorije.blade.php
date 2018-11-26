@@ -10,19 +10,18 @@
         <h1> Kategorije </h1>
     </div>
 
+    <!-- Najbolji vicevi kategorija -->
+    <button onclick='location.href="/najboljiVicevi"' class="btn btn-primary" id="dugme">
+        Top Vicevi 
+    </button>
+
+    <!-- ispis svih kategorija -->
     @if(count($categories)>0)
         @foreach($categories as $category)
-            
-            
-            <a href="/kategorije/{{$category->id}}">
-                <button class="btn btn-primary" id="dugmeKategorije">
-                    <p>
+                <button onclick='location.href="/kategorije/{{$category->id}}"' class="btn btn-primary" id="dugme">
                         {{$category->categoryName}}
-                    </p>
                 </button>
-            </a>
             <br>
-            
         @endforeach
     @else
     <p> Nema kategorija </p>

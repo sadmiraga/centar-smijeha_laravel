@@ -7,10 +7,13 @@
     
 ?>
 
+    <div class="well" id="usredini">
+        <h1>Posaljite novi vic </h1>
+    </div>
 
 
 
-
+    <!-- ispis svih errora sa forme -->
     @if(count($errors)>0)
         @foreach($errors->all() as $error)
             <div id="errorMessages" class="alert alert-danger">
@@ -18,24 +21,46 @@
             </div>
         @endforeach
     @endif
+
+    <!-- Poruka u uspiješno poslanoj formi -->
+    @if(Session::has('successMessage'))
+        <div id="errorMessages" class="alert alert-success" style="text-align:center; word-wrap:break-word;">
+            {{Session::get('successMessage')}}
+        </div>
+    @endif
     
-    {!! Form::open(['url' => 'posaljitevic/submit']) !!}
-        <div class="form-group" id="submitform">
-            {{Form::textarea('jokeText','', ['class' => 'form-control', 'placeholder'=>'Napišite vic', 'rows'=>'3', 'cols'=>'2'] )}}
-            <select name="category_id">
-                @foreach ($categories as $category)
-                    <option value ={{$category->id}}> {{$category->categoryName}} </option>    
-                @endforeach
-            </select>
-            
+    <!-- FORMA -->
+    <div class="alert alert-info" id="usredini">
+        {!! Form::open(['url' => 'posaljitevic/submit']) !!}
+            <div class="form-group" id="submitform">
+                {{Form::textarea('jokeText','', ['class' => 'form-control', 'placeholder'=>'Napišite vic', 'rows'=>'3', 'cols'=>'2'] )}}
+                <br>
+                <label> Izaberite Kategoriju vica </label>
+                <select class="form-control" name="category_id">
+                    @foreach ($categories as $category)
+                        <option value ={{$category->id}}> {{$category->categoryName}} </option>    
+                    @endforeach
+                </select>
+            </div>
 
-        </div>
+            @if(Auth::guest())
+                <!-- reCAPTCHA -->
+                <div id="recaptcha-box">
+                        {!! NoCaptcha::renderJs() !!}
+                        {!! NoCaptcha::display() !!}
+                </div>
+                <br> 
+            @endif
+
+            <!--submit -->
+            <div class="text-center">
+                {{Form::submit('Pošalji',['class'=>'btn btn-primary'])}}
+            </div>
+
+            {!! Form::close() !!}
+    </div>
 
 
-
-        <div class="text-center">
-            {{Form::submit('Pošalji',['class'=>'btn btn-primary'])}}
-        </div>
-    {!! Form::close() !!}
-
+        
+    
 @endsection

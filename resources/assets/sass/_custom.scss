@@ -35,12 +35,13 @@
     margin-left: 25%;
 }
 
-#dugmeKategorije{
+#dugme{
     width:50%;
     text-align: center;
     margin-right: 25%;
     margin-left: 25%;
-
+    white-space: normal;
+    word-wrap:break-word;
 }
 
 #likeUnlikeButton{
@@ -69,4 +70,50 @@
 
 #vic{
     text-align:center;
+    word-wrap:break-word;
+    width:50%;
+    margin-right: 25%;
+    margin-left: 25%;
+}
+
+#nisamRobot{
+    text-align:center;
+    float:center;
+}
+
+#recaptcha-box{
+    width:304px;
+    margin: 0 auto;
+}
+
+
+#tabelaImeAutora{
+    width: 15%;
+}
+
+#tabelaJokeText{
+    white-space: normal;
+    word-wrap:break-word;
+    width: 40%;
+}
+
+#tabelaImeKategorije{
+    width: 15%;
+}
+
+#odobri_odbij{
+    width:15%;
+}
+
+
+table td {
+    word-break: break-all;
+}
+
+#brojLajkova{
+    pointer-events: none;
+}
+
+#nijeOdobren{
+    font-size:70%;
 }

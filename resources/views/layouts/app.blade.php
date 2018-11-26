@@ -12,6 +12,17 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129745863-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-129745863-1');
+    </script>
+
 </head>
 <body>
     <div id="app">
@@ -79,6 +90,7 @@
             </div>
         </nav>
 
+        
         @yield('content')
 
         @yield('categories')
@@ -90,7 +102,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
         <footer id="footer" class="text-center">
             <p><a href="https://www.instagram.com/centar_smijeha/"> Instagram </a> </p>
-            <p><a href="https://www.facebook.com/sadmir.hasanic.5"> Facebook </a> </p>
+            <p><a href="https://www.facebook.com/Centar-smijeha-2111595259095133"> Facebook </a> </p>
             <p><a href="https://twitter.com/CSmijeha"> Twitter </a> </p>
         </footer>
 </body>
