@@ -62,7 +62,9 @@ Spletna stran ima 5 glavnih stavkov
 	Na tistoj strani se ispišejo vse kategorije, cist na vrhu se nalazi kategorija pod nazivom 'TOP VICEVI'
 	klik na kategorijo preusmeri na novo stran na kateroj ispise vse viceve iz tiste kategorije 
 		TOP VICEVI:
-			na tistoj strani se ispisejo vsi vicevi kateri so lajkani poredani od onog sa najvec lajkov do onog ki ima najmanj lajkov 
+			na tistoj strani se ispisejo vsi vicevi kateri so lajkani poredani od onog sa najvec lajkov do onog ki ima
+			najmanj lajkov 
+			
 5. LOGOUT/PRIJAVA/REGISTER
 		
 
