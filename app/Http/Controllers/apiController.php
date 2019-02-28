@@ -15,6 +15,23 @@ class apiController extends Controller
     }
 
 
+    public function test(){
+
+        $vicevi = jokes::all()->toArray();
+        return response()->json($vicevi); 
+
+        /*         foreach ($viceviData as $vic){
+            
+             $data = [
+                'id' => $vic->id,
+                'created_at' => $vic->created_at,
+                'jokeText' => $vic->jokeText,
+                'category_id' => $vic->category_id,
+                'user_id' => $vic->user_id,
+            ];  
+        } */
+    }
+
     //ALL JOKES 4 REAL
     public function index(){
       //get jokes

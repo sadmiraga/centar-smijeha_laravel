@@ -34,3 +34,7 @@ Route::put('/vic','apiController@store');
 
 //izbrisi vic
 Route::delete('/vic','apiController@destroy');
+
+
+//HELP 
+Route::get("/help", "apiController@test");

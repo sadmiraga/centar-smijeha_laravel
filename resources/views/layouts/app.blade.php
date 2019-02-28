@@ -8,6 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/png" href="https://scontent.flju1-1.fna.fbcdn.net/v/t1.15752-9/50940382_599682140484583_2707439369265872896_n.png" sizes="16x32"/>
+
     <title>Centar Smijeha</title>
 
     <!-- Styles -->
